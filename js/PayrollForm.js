@@ -7,19 +7,10 @@ salary.addEventListener('input', function () {
     output.textContent = salary.value;
 });
 
-//UC9 an UC10
+//UC9 , UC10, UC11
 
 class EmployeePayrollData{
-    //properties
-    id;
-    name;
-    profilePic;
-    gender;
-    department;
-    salary;
-    startDate;
-    notes;
-
+    
     get id() {return this._id;}
     set id(id){
         this._id=id;
@@ -56,7 +47,7 @@ class EmployeePayrollData{
         let newDate = new Date(startDate[2],startDate[1],startDate[0]);
         let startDateCompare = dates.compare(newDate,new Date());
         if(startDateCompare<=0) this._startDate = newDate;
-        else throw 'Start Date is incorrect';
+        else throw 'Start Date is incorrect!';
     }
 
     get notes() {return this._notes}
