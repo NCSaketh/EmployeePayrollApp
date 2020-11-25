@@ -75,11 +75,11 @@ class EmployeePayrollData{
                 +" : Notes="+this.notes;
     }
 }
-
 const save = () => {
     try {
         let employeePayroll = new EmployeePayrollData();
         employeePayroll.name = document.getElementById('name').value;
+        employeePayroll.id = getId();
         employeePayroll.profilePic = getRadioValue(document.getElementsByName('profile'));
         employeePayroll.gender = getRadioValue(document.getElementsByName('gender'));
         employeePayroll.department = getCheckBoxValue(document.getElementsByClassName('checkbox'));
@@ -147,7 +147,17 @@ const unsetSelectedValue = (propertyValue) => {
         item.checked = false;
     });
 }
-const setValue = (id, value)  => {
+const setValue = (id, value) => {
     const element = document.querySelector(id);
     element.value = value;
+}
+
+function getEmpDataFromLocalStorage() {
+    return localStorage.getItem("EmployeePayrollList") ?
+        JSON.parse(localStorage.getItem("EmployeePayrollList")) :
+        [];
+}
+function getId() {
+    let empList = getEmpDataFromLocalStorage();
+    return empList.length + 1;
 }
